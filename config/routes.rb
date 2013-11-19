@@ -1,14 +1,21 @@
 Snapp::Application.routes.draw do
   
   devise_for :users
-  resources :users do
+  
+  resources :users, only: [:index] do
     resources :posts do
       resources :comments
+      resources :likes
+      resources :dislikes
     end
     resource :profile
     resource :interests
     resources :follows
-    resources :messages
+    resources :messages do
+      collection do
+        get "archive"
+      end
+    end
     resources :images
     resources :albums
   end
@@ -31,7 +38,7 @@ Snapp::Application.routes.draw do
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-  #root 'welcome#index'
+  root 'users#index'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

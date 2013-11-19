@@ -5,4 +5,10 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
   has_many :interests
   has_one :profile
+  has_many :albums
+  mount_uploader :avatar, AvatarUploader
+  
+  def name 
+    return first_name + ' ' + last_name
+  end
 end
