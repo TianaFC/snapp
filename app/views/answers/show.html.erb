@@ -1,0 +1,19 @@
+
+<h1>Answers</h1>
+
+<p>
+	@answer.user = current_user.name
+</p>
+
+<p>
+	<strong>Answer:</strong>
+	<%= @answers.text %>
+</p>
+
+<p>
+	<strong>Score:</strong>
+	<%= @answers.score %>
+</p>
+
+<%= link_to 'Back', answer_path %>
+<%= link_to 'Edit Answer', edit_answer_path class: 'btn btn-default'%>
